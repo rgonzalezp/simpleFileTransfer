@@ -1,18 +1,15 @@
 from tkinter import *
+from functools import partial
 
 class Main():
-    def Client():
+    def Client(root):
         from clientelab4.clientProtocolHandler import main
-        main()
-    def Server():
-        from servidorlab4.serverFiles import main
-        main()
+        main(root)
     def Exit():
         exit()
 
     root = Tk()
-    Canvas(root, width = 300, height = 100).pack()
-    Button(root, text=("Client"), command = Client).pack()
-    Button(root, text=("Server"), command = Server).pack()
+    Canvas(root, width = 500, height = 200).pack()
+    Button(root, text=("Connect"), command= partial(Client, root)).pack()
     Button(root, text=("Quit"), command = Exit).pack()
     mainloop()

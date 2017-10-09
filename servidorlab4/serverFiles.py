@@ -1,6 +1,6 @@
 import threading
 import socketserver
-import servidorlab4.clientHandler
+import clientHandler
 
 
 class FileServer(socketserver.ThreadingTCPServer):
@@ -25,7 +25,7 @@ def main():
     # Port 0 means to select an arbitrary unused port
     HOST, PORT = "localhost", 27000
 
-    server = FileServer((HOST, PORT), servidorlab4.clientHandler.Handler)
+    server = FileServer((HOST, PORT), clientHandler.Handler)
     ip, port = server.server_address
 
     # Start a thread with the server -- that thread will then start one
@@ -39,4 +39,3 @@ def main():
         server.shutdown()
 
 if __name__ == "__main__":
-    main()
