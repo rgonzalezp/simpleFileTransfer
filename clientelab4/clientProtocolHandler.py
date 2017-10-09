@@ -32,9 +32,10 @@ def client(ip, port):
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
         sock.connect((ip, port))
         handler(sock)
-
-
-if __name__ == "__main__":
+def main():
     # Port 0 means to select an arbitrary unused port
     HOST, PORT = "localhost", 27000
     client(HOST, PORT)
+
+if __name__ == "__main__":
+    main()

@@ -1,6 +1,6 @@
 import threading
 import socketserver
-import clientHandler
+import servidorlab4.clientHandler
 
 
 class FileServer(socketserver.ThreadingTCPServer):
@@ -21,12 +21,11 @@ class FileServer(socketserver.ThreadingTCPServer):
         else:
             return True
 
-
-if __name__ == "__main__":
+def main():
     # Port 0 means to select an arbitrary unused port
     HOST, PORT = "localhost", 27000
 
-    server = FileServer((HOST, PORT), clientHandler.Handler)
+    server = FileServer((HOST, PORT), servidorlab4.clientHandler.Handler)
     ip, port = server.server_address
 
     # Start a thread with the server -- that thread will then start one
@@ -38,3 +37,6 @@ if __name__ == "__main__":
         print("Forced server to close")
     finally:
         server.shutdown()
+
+if __name__ == "__main__":
+    main()
