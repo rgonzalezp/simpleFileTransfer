@@ -11,6 +11,10 @@ def getFiles(dir):
 
 class Handler(socketserver.BaseRequestHandler):
 
+    def setup(self):
+
+        self.request.settimeout(120)
+
     def handle(self):
 
         # Send the avaiable folders
