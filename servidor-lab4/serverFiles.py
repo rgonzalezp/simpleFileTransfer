@@ -6,7 +6,7 @@ import clientHandler
 class FileServer(socketserver.ThreadingTCPServer):
     """docstring for FileServer"""
 
-    def __init__(self, address, handler, max_clients=1):
+    def __init__(self, address, handler, max_clients=20):
         super().__init__(address, handler)
         self.current_clients = 0
         self.max_clients = max_clients
